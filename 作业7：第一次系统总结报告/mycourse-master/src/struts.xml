@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 学生模块 -->
+	<package name="default" extends="struts-default">
+
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="login_success">/main.jsp</result>
+			<result name="login_input">/index.jsp</result>
+			<result name="logout_success">/index.jsp</result>
+			<result name="list_selected_course_success">/list_selected_course_success.jsp</result>
+			<result name="list_unselected_course_success">/list_unselected_course_success.jsp</result>
+			<result name="select_course_success" type="redirect">/select_course_success.jsp
+			</result>
+			<result name="quit_course_success" type="redirect">/quit_course_success.jsp
+			</result>
+			<result name="show_info_success">/show_info_success.jsp</result>
+			<result name="show_info_for_update_success">/show_info_for_update_success.jsp</result>
+			<result name="update_info_success" type="redirectAction">User_showInfo</result>
+			<result name="change_password_success" type="redirectAction">User_logout
+			</result>
+		</action>
+
+	</package>
+
+	<!-- 教师模块 -->
+	<package name="teacher" extends="struts-default" namespace="/teacher">
+
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="login_success">/teacher/main.jsp</result>
+			<result name="login_input">/teacher/index.jsp</result>
+			<result name="logout_success">/teacher/index.jsp</result>
+			<result name="list_student_success">/teacher/list_student_success.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- 管理员模块 -->
+	<package name="admin" extends="struts-default" namespace="/admin">
+
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="login_success">/admin/main.jsp</result>
+			<result name="login_input">/admin/index.jsp</result>
+			<result name="logout_success">/admin/index.jsp</result>
+			<result name="list_student_success">/admin/list_student_success.jsp</result>
+			<result name="list_course_success">/admin/list_course_success.jsp</result>
+			<result name="list_teacher_success">/admin/list_teacher_success.jsp</result>
+			<result name="list_info_success">/admin/list_info_success.jsp</result>
+			<result name="delete_student_success">/admin/delete_student_success.jsp</result>
+			<result name="delete_course_success">/admin/delete_course_success.jsp</result>
+			<result name="delete_info_success">/admin/delete_info_success.jsp</result>
+			<result name="add_student_success">/admin/add_student_success.jsp</result>
+			<result name="add_course_success">/admin/add_course_success.jsp</result>
+		</action>
+
+	</package>
+</struts>
