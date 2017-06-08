@@ -30,6 +30,10 @@ import model.Student;
 
 import model.Teacher;
 
+import com.util.mail.MailSenderInfo;
+import com.util.mail.MyAuthenticator;
+import com.util.mail.SimpleMailSender;
+
 
 
 public class AdminAction extends ActionSupport implements ApplicationAware {
@@ -179,6 +183,22 @@ public class AdminAction extends ActionSupport implements ApplicationAware {
 		//AdminDAO adminDAO = new AdminDAO();
 
 		adminDAO.deleteStudent(sid);
+		MailSenderInfo mailInfo = new MailSenderInfo();    
+	      mailInfo.setMailServerHost("smtp.qq.com");    
+	      mailInfo.setMailServerPort("25");    
+	      mailInfo.setValidate(true);    
+	      mailInfo.setUserName("419765734@qq.com");    
+	      mailInfo.setPassword("ainiwcl20130625");//您的邮箱密码    
+	      mailInfo.setFromAddress("419765734@163.com");    
+	      mailInfo.setToAddress("2385878750@qq.com");    
+	      mailInfo.setSubject("教务处：选课信息");    
+	      mailInfo.setContent("课程信息更改，请注意查收！");    
+	         //这个类主要来发送邮件   
+	      SimpleMailSender sms = new SimpleMailSender();   
+	          sms.sendTextMail(mailInfo);//发送文体格式    
+	          sms.sendHtmlMail(mailInfo);//发送html格式   
+
+		
 
 		return "delete_student_success";
 
@@ -206,8 +226,8 @@ public class AdminAction extends ActionSupport implements ApplicationAware {
 
 		//AdminDAO adminDAO = new AdminDAO();
 
-		adminDAO.deleteInfo(sid,cid,tid);
-
+		adminDAO.deleteInfo(sid,cid,tid);		
+		
 		return "delete_info_success";
 
 	}

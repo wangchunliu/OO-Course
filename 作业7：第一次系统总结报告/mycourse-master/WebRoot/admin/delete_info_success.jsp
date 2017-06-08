@@ -25,7 +25,7 @@
 	<div id="page-main" style="backgroud:#104d74;">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>删除成功，<a href="Admin_listInfo">返回</a>所有选课列表查看</h2>
+				<h2>删除成功，邮件已发送给学生，<a href="Admin_listInfo">返回</a>所有选课列表查看</h2>
 			</div>
 		</div>
 	</div>
